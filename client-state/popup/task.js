@@ -6,12 +6,13 @@ modalMain.addEventListener('click', () =>{
     document.cookie = 'modalSearch=' + encodeURIComponent(modalMain.className);  
 })
 
-modalMain.className = getCookie('modalSearch');
+const cookieElement = getCookie('modalSearch');
+modalMain.className = cookieElement === undefined ? 'modal modal_active' : cookieElement;
 
 function getCookie(name) {
 
     var matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ))
-    return matches ? decodeURIComponent(matches[1]) : undefined
+    return matches ? decodeURIComponent(matches[1]) : undefined;
 }
